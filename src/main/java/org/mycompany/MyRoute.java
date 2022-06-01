@@ -26,7 +26,23 @@ public class MyRoute extends RouteBuilder {
       
       
      from("direct:hello")
-       .setBody(simple("hello Abhishek"));
+     .routeId("GreetingRoute")
+     	.choice()
+     	  .when(simple("${header.name} == 'abhishek'"))
+     	  .to("direct:greetAbhishek")
+     	  .otherwise()
+     	 .to("direct:greetStranger");
+     
+     
+     from("direct:greetAbhishek")
+     	.routeId("greetAbhishek")
+     	.setBody(simple("hello Abhishek..!"));
+     
+     from("direct:greetStranger")
+	  	.routeId("greetStranger")
+	  	.setBody(simple("hello Stranger..!"));
+  
+     
 
 
 	    
