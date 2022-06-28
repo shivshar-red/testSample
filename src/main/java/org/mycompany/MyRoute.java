@@ -15,7 +15,7 @@ public class MyRoute extends RouteBuilder {
          .enableCORS(true)
          .component("jetty")
          .host("0.0.0.0")
-         .port(8989)
+         .port(8988)
          .bindingMode(RestBindingMode.json);
 
 
@@ -27,20 +27,13 @@ public class MyRoute extends RouteBuilder {
       
      from("direct:hello")
      .routeId("GreetingRoute")
-     	.choice()
-     	  .when(simple("${header.name} == 'abhishek'"))
-     	  .to("direct:greetAbhishek")
-     	  .otherwise()
+ 
      	 .to("direct:greetStranger");
      
-     
-     from("direct:greetAbhishek")
-     	.routeId("greetAbhishek")
-     	.setBody(simple("hello Abhishek..!"));
-     
+
      from("direct:greetStranger")
 	  	.routeId("greetStranger")
-	  	.setBody(simple("hello Stranger..!"));
+	  	.setBody(simple("Hello Application!"));
   
      
 
