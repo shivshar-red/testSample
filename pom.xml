@@ -60,6 +60,11 @@
 			<groupId>io.hawt</groupId>
 			<artifactId>hawtio-springboot</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-kafka -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-kafka</artifactId>
+		</dependency>
 
 
 	</dependencies>
