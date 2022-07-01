@@ -47,11 +47,11 @@ public class MyRoute extends RouteBuilder {
                     exchange.getIn().setBody(exchange.getIn().getHeader("log" ,String.class));
                 }
             })
-			 .to("kafka:samsung-topic?brokers=samsung-cluster-kafka-bootstrap:9092");
+			 .to("kafka:{{topic}}?brokers={{broker}}");
 
 
 		 // Kafka Consumer
-		 from("kafka:samsung-topic?brokers=samsung-cluster-kafka-bootstrap:9092")
+		 from("kafka:{{topic}}?brokers={{broker}}")
 				 .log("Message received from Kafka : ${body}")
 				 .log("    on the topic ${headers[kafka.TOPIC]}")
 				 .log("    on the partition ${headers[kafka.PARTITION]}")
